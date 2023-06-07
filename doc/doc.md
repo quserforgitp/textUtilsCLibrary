@@ -6,72 +6,90 @@ La librería textUtils proporciona funciones para manipular cadenas de caractere
 
 ## FUNCIONES
 
-# unsigned int rndnum(void)
+# void strtoupper(char lowerCaseCharsArray[], size_t stringLength)
 
-- Genera un número entero aleatorio utilizando el generador de números 
-pseudoaleatorios rand(). Esta función utiliza la función time(NULL) 
-para obtener el tiempo actual y la función getpid() para obtener el ID 
-del proceso. Combina el tiempo y el ID del proceso mediante una 
-operación XOR para obtener una semilla única. A continuación, 
-establece la semilla con srand() y genera un número aleatorio con 
-rand(). El número aleatorio se devuelve como resultado.
-
-# unsigned int maxrndnum(unsigned int maxValue)
-
-- Genera un número entero aleatorio en el rango de 0 a maxValue. 
-Utiliza la función rndnum() para obtener un número aleatorio y luego 
-utiliza el operador módulo % para limitar el rango al valor máximo 
-especificado. El número aleatorio resultante se devuelve como 
-resultado.
-
-# unsigned int mmrndnum(unsigned int minValue, unsigned int maxValue)
-
-- Genera un número entero aleatorio en el rango de minValue a 
-maxValue. Utiliza la función maxrndnum() para generar un número 
-aleatorio en el rango de 0 a maxValue. A continuación, aplica una 
-técnica de rechazo para igualar la distribución y garantizar que el 
-número generado esté dentro del rango especificado. Si el número 
-generado está por debajo del valor mínimo o por encima del valor 
-máximo permitido, se generará un nuevo número aleatorio hasta que se 
-cumpla la condición. El número aleatorio resultante se devuelve como 
-resultado.
-
-# swapint(int *a, int *b) int,char,float
-
-- Esta función intercambia los valores de dos variables. Toma 
-dos punteros al tipo de variable como argumentos y realiza el 
-intercambio de los referenciados por dichos punteros. 
-
-# indexofint(int arr[], size_t arraySize, int target) int,char,float
-
-- Esta función busca un elemento específico en un array y 
-devuelve su índice si se encuentra. Si el elemento no está presente en 
-el array, se devuelve el valor -1.
+- Esta función recibe un array de caracteres en minúscula 
+lowerCaseCharsArray y su longitud stringLength. Convierte cada letra 
+minúscula en el array en su correspondiente letra mayúscula utilizando 
+la función toupper(). La función modifica directamente el array 
+lowerCaseCharsArray original.
 
   - Parametros:
-    - arr: Array de tipo de variable en el que se realizará la búsqueda.
-    - arraySize: Tamaño del array.
-    - target: Elemento entero que se busca en el array.
+    - lowerCaseCharsArray: Array de caracteres en minúscula.
+    - stringLength: Longitud del array.
+
+# char *mkupperstring(char const lowerCaseCharsArray[], size_t stringLength)
+
+- Esta función recibe un array de caracteres en minúscula 
+lowerCaseCharsArray y su longitud stringLength. Crea un nuevo array de 
+caracteres en mayúscula utilizando la función toupper() y lo devuelve 
+como resultado. El array original lowerCaseCharsArray no se modifica.
+
+  - Parametros:
+    - lowerCaseCharsArray: Array de caracteres en minúscula.
+    - stringLength: Longitud del array.
+  - Retorno:
+    - char *: Puntero al nuevo array de caracteres en mayúscula. El puntero debe liberarse con free() cuando ya no se necesite.
+    
+# void strtolower(char upperCaseCharsArray[], size_t stringLength)
+
+- Esta función recibe un array de caracteres en mayúscula 
+upperCaseCharsArray y su longitud stringLength. Convierte cada letra 
+mayúscula en el array en su correspondiente letra minúscula utilizando 
+la función tolower(). La función modifica directamente el array 
+upperCaseCharsArray original. 
+  - Parametros:
+    - upperCaseCharsArray: Array de caracteres en mayúscula.
+    - stringLength: Longitud del array.
+
+# char *mklowerstring(char const upperCaseCharsArray[], size_t stringLength)
+
+- Esta función recibe un array de caracteres en mayúscula 
+upperCaseCharsArray y su longitud stringLength. Crea un nuevo array de 
+caracteres en minúscula utilizando la función tolower() y lo devuelve 
+como resultado. El array original upperCaseCharsArray no se modifica.
+
+  - Parametros:
+    - upperCaseCharsArray: Array de caracteres en mayuscula.
+    - stringLength: Longitud del array.
+  - Retorno:
+    - char *: Puntero al nuevo array de caracteres en minuscula. El puntero debe liberarse con free() cuando ya no se necesite.
 
 ## USO
-Para utilizar la librería toolsUtils, asegúrate de incluir el archivo 
-de encabezado "textUtils.h" en tu source que la vaya a utilizar. 
+Para utilizar la librería textUtils, asegúrate de incluir el archivo 
+de encabezado "textUtils.h" en tu source. 
 Además, asegúrate de agregar la libreria estatica a tu ruta.
 
 ```C
   #include "toolsUtils.h"
-  #include <stdio.h>
 
   int main() {
-    // codigo ejemplo aqui
+    // Ejemplo de uso de las funciones
+    char text[] = "Hello World";
+    size_t length = sizeof(text) - 1;
+
+    // strtoupper() - Convertir a mayúsculas directamente
+    strtoupper(text, length);
+    printf("Resultado de strtoupper(): %s\n", text);
+
+    // mkupperstring() - Crear una nueva cadena en mayúsculas
+    char *upperText = mkupperstring(text, length);
+    printf("Resultado de mkupperstring(): %s\n", upperText);
+    free(upperText); // Liberar la memoria asignada por mkupperstring()
+
+    // strtolower() - Convertir a minúsculas directamente
+    strtolower(text, length);
+    printf("Resultado de strtolower(): %s\n", text);
+
+    // mklowerstring() - Crear una nueva cadena en minúsculas
+    char *lowerText = mklowerstring(text, length);
+    printf("Resultado de mklowerstring(): %s\n", lowerText);
+    free(lowerText); // Liberar la memoria asignada por mklowerstring()
+
     return 0;
 }
-
 ```
 
 ## NOTAS ADICIONALES
 
-- La función rndnum() utiliza la función srand() para establecer la 
-semilla del generador de números pseudoaleatorios. Asegúrate de llamar 
-a srand() antes de utilizar cualquier otra función de generación de 
-números aleatorios si deseas utilizar una semilla personalizada.
+- Recuerda liberar la memoria con free();

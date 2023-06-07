@@ -16,7 +16,7 @@ $(BIN_DIR)/$(TARGET) : $(OBJ_DIR)/test.o $(OBJ_DIR)/textUtils.o
 	@$(CC) $(CFLAGS) $(INC_FLAGS) $(OBJ_DIR)/test.o $(OBJ_DIR)/textUtils.o -o $(BIN_DIR)/$(TARGET)
 
 $(OBJ_DIR)/test.o : $(SRC_DIR)/test.c $(INC_DIR)/textUtils.h
-	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $(SRC_DIR)/test.c -o $(OBJ_DIR)/main.o
+	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $(SRC_DIR)/test.c -o $(OBJ_DIR)/test.o
   
 $(OBJ_DIR)/textUtils.o : $(SRC_DIR)/textUtils.c $(INC_DIR)/textUtils.h
 	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $(SRC_DIR)/textUtils.c -o $(OBJ_DIR)/textUtils.o
