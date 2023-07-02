@@ -3,10 +3,18 @@
 /* INICIO DEL PROGRAMA */
 int main()// main for testing pourposes
 {
-  char arreglochar[30] = "HOLA";
-  char *ptrArregloMinus = mklowerstring(arreglochar,strlen(arreglochar));
-  printf("original %s\n", arreglochar);
-  printf("nuevo %s\n", ptrArregloMinus);
+  
+  printf("%d\n",samecase('a','b'));//1
+  printf("%d\n",samecase('a',' '));//-1
+  printf("%d\n",samecase('a','A'));// 0
+
+  putchar('\n');
+
+  printf("%d\n", strsamecase("hola")); // 1
+  printf("%d\n", strsamecase("1ola")); // -1
+  printf("%d\n", strsamecase("hoLa")); // 0
+
+  getchar();
   
   return EXIT_SUCCESS;
 }
