@@ -55,6 +55,18 @@ como resultado. El array original upperCaseCharsArray no se modifica.
   - Retorno:
     - char *: Puntero al nuevo array de caracteres en minuscula. El puntero debe liberarse con free() cuando ya no se necesite.
 
+# int samecase (char a, char b)
+
+- Compara dos caracteres y determina si están en el mismo caso (mayúscula o minúscula) o no.
+
+  - Parametros:
+    - a: un caracter a comparar.
+    - b: otro caracter a comparar.
+  - Retorno:
+    - -1: Si ambos caracteres no son letras o se mantienen iguales después de cambiar el caso.
+    - 1: Si ambos caracteres son minúsculas o ambos son mayúsculas.
+    - 0: Si los caracteres tienen casos diferentes.
+
 ## USO
 Para utilizar la librería textUtils, asegúrate de incluir el archivo 
 de encabezado "textUtils.h" en tu source. 
