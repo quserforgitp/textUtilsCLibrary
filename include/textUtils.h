@@ -37,8 +37,16 @@ char *mkstrreplace(char const stringArray[], size_t stringLength, char cadenaRee
  * @return int - Devuelve -1 si ambos caracteres no son letras, 1 si están en el mismo caso (ambos minúsculas o ambos mayúsculas), y 0 en caso contrario.
  */
 int samecase (char a, char b);
-//Verifica que todas las letras de un string sean o uppercase o lowercase
-int strsamecase ( char string[] );
+
+
+/**
+ * Verifica si una cadena de caracteres está compuesta exclusivamente por caracteres del mismo caso.
+ *
+ * @param string - La cadena de caracteres a verificar.
+ * @return int - Devuelve -1 si algún caracter no es una letra, 0 si la cadena contiene caracteres de diferentes casos y 1 si todos los caracteres son letras y están en el mismo caso.
+ */
+int strsamecase(char string[]);
+
 
 // Divide una cadena en subcadenas basadas en un delimitador
 void strsplit(char stringArray[],size_t stringLength, char delimitador);
