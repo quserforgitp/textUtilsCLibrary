@@ -67,6 +67,17 @@ como resultado. El array original upperCaseCharsArray no se modifica.
     - 1: Si ambos caracteres son minúsculas o ambos son mayúsculas.
     - 0: Si los caracteres tienen casos diferentes.
 
+    # int strsamecase (char string[])
+
+  - Comprueba si todos los pares consecutivos de caracteres en una cadena tienen el mismo caso (mayúscula o minúscula).
+
+  - Parametros:
+    - string: Un array de caracteres que representa la cadena a analizar.
+  - Retorno:
+    - -1: Si algún caracter en la cadena no es una letra.
+    - 1: Si todos los pares consecutivos de caracteres en la cadena son samecase.
+    - 0: Si algún par consecutivo de caracteres en la cadena no es samecase.
+
 ## USO
 Para utilizar la librería textUtils, asegúrate de incluir el archivo 
 de encabezado "textUtils.h" en tu source. 
