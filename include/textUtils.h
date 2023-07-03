@@ -28,7 +28,14 @@ char *mkstrtrim(char const stringArray[], size_t stringLength);
 //Reemplaza todas las ocurrencias de una subcadena por otra en una cadena dada
 void strreplace(char stringArray[], size_t stringLength, char cadenaReemplazo[], char cadenaAreemplazar);
 char *mkstrreplace(char const stringArray[], size_t stringLength, char cadenaReemplazo[], char cadenaAreemplazar);
-//Verifica que 2 letras sean samecase (1,0,-1) el -1 es para cuando alguno no es letra
+
+/**
+ * Compara dos caracteres para determinar si están en el mismo caso.
+ *
+ * @param a - El primer carácter a comparar.
+ * @param b - El segundo carácter a comparar.
+ * @return int - Devuelve -1 si ambos caracteres no son letras, 1 si están en el mismo caso (ambos minúsculas o ambos mayúsculas), y 0 en caso contrario.
+ */
 int samecase (char a, char b);
 //Verifica que todas las letras de un string sean o uppercase o lowercase
 int strsamecase ( char string[] );
